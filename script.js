@@ -1,5 +1,5 @@
 const scroll = new LocomotiveScroll({
-  el: document.querySelector('#main'),
+  el: document.querySelector("#main"),
   smooth: true,
 });
 
@@ -24,7 +24,7 @@ function videoconAnimation() {
   videocon.addEventListener("mousemove", function (dets) {
     gsap.to(playbtn, {
       left: dets.x,
-      top: dets.y
+      top: dets.y,
     });
   });
 }
@@ -47,10 +47,34 @@ function loadingAnimation() {
 }
 loadingAnimation();
 
-document.addEventListener("mousemove", function(dets)
-{
-  gsap.to("#cursor",{
-    left:dets.x,
-    top:dets.y 
-  })
-})
+document.addEventListener("mousemove", function (dets) {
+  gsap.to("#cursor", {
+    left: dets.x,
+    top: dets.y,
+  });
+});
+
+// document.querySelectorAll(".child").addEventListener("mouseenter",function(){
+//   gsap.to("#cursor",{
+//     transform: "translate(-50%, -50%) scale(1)"
+//   })
+// })
+
+// document.querySelector("#child1").addEventListener("mouseleave", function () {
+//   gsap.to("#cursor", {
+//     transform: "translate(-50%, -50%) scale(0)",
+//   });
+// });
+
+document.querySelectorAll(".child").forEach(function (elem) {
+  elem.addEventListener("mouseenter", function () {
+    gsap.to("#cursor", {
+      transform: "translate(-50%, -50%) scale(1)",
+    });
+  });
+  elem.addEventListener("mouseleave", function () {
+    gsap.to("#cursor", {
+      transform: "translate(-50%, -50%) scale(0)",
+    });
+  });
+});
