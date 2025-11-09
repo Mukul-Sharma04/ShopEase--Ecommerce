@@ -1,4 +1,4 @@
-function locomotiveAnimation(){
+function locomotiveAnimation() {
   gsap.registerPlugin(ScrollTrigger);
 
   // Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
@@ -36,11 +36,10 @@ function locomotiveAnimation(){
 
   // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
   ScrollTrigger.refresh();
-
 }
 locomotiveAnimation();
 
-function navbarAnimation(){
+function navbarAnimation() {
   gsap.to("#nav-part1 h1", {
     transform: "translateY(-100%)",
     scrollTrigger: {
@@ -74,36 +73,25 @@ function navbarAnimation(){
       scrub: 2,
     },
   });
-
 }
 navbarAnimation();
 
-function videoconAnimation() {
-  var videocon = document.querySelector("#video-container");
-  var playbtn = document.querySelector("#play");
-
-  videocon.addEventListener("mouseenter", function () {
-    gsap.to(playbtn, {
-      scale: 1,
-      opacity: 1,
-    });
+function heroAnimation() {
+  gsap.from(".hero-text p", {
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    delay: 0.5,
   });
 
-  videocon.addEventListener("mouseleave", function () {
-    gsap.to(playbtn, {
-      scale: 0,
-      opacity: 0,
-    });
-  });
-
-  videocon.addEventListener("mousemove", function (dets) {
-    gsap.to(playbtn, {
-      left: dets.x - 70,
-      top: dets.y -80,
-    });
+  gsap.from(".hero-text button", {
+    opacity: 0,
+    y: 80,
+    duration: 1,
+    delay: 0.8,
   });
 }
-videoconAnimation();
+heroAnimation();
 
 function loadingAnimation() {
   gsap.from("#page1 h1", {
@@ -123,6 +111,8 @@ function loadingAnimation() {
 loadingAnimation();
 
 function CursorAnimation() {
+  gsap.set("#cursor", { xPercent: -50, yPercent: -50, scale: 0 });
+
   document.addEventListener("mousemove", function (dets) {
     gsap.to("#cursor", {
       left: dets.x,
@@ -154,6 +144,5 @@ function CursorAnimation() {
       });
     });
   });
-
 }
 CursorAnimation();
